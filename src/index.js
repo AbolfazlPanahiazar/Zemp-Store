@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import store from "./store/store";
 import "./index.css";
 
 const THEME = createMuiTheme({
@@ -14,11 +16,13 @@ const THEME = createMuiTheme({
 });
 
 ReactDOM.render(
-  <ThemeProvider theme={THEME}>
-    <Router>
-      <App />
-    </Router>
-  </ThemeProvider>,
+  <Provider store={store}>
+    <ThemeProvider theme={THEME}>
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
+  </Provider>,
   document.getElementById("root")
 );
 

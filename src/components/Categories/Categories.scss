@@ -1,0 +1,35 @@
+.categories {
+  max-width: 100%;
+
+  &__header {
+    padding: 0 8px;
+    font-weight: bold;
+  }
+
+  &__body {
+    max-width: 1200px;
+    display: flex;
+    overflow-x: scroll;
+    padding: 3px;
+
+    &--item {
+      margin: 0 8px;
+      padding: 3px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 1px 1px 4px #ccc;
+      cursor: pointer;
+
+      img {
+        padding: 5px;
+      }
+
+      span {
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
