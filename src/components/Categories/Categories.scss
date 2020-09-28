@@ -1,5 +1,5 @@
 .categories {
-  max-width: 100%;
+  width: 100%;
 
   &__header {
     padding: 0 8px;
@@ -7,12 +7,16 @@
   }
 
   &__body {
-    max-width: 1200px;
+    max-width: 1100px;
+    width: 100%;
     display: flex;
-    overflow-x: scroll;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: hidden;
     padding: 3px;
 
     &--item {
+      width: 80px;
       margin: 0 8px;
       padding: 3px;
       display: flex;
@@ -24,6 +28,7 @@
 
       img {
         padding: 5px;
+        width: 90%;
       }
 
       span {

@@ -1,16 +1,16 @@
-import React, { ReactChild } from "react";
+import React from "react";
+import { Box } from "@material-ui/core";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./Container.scss";
 
 function Container({ children }) {
   return (
-    <div className="Container">
+    <Box style={{ maxWidth: "1100px" }} className="Container" display="flex" flexDirection="column" justifyContent="center">
       <Header />
       {children}
       <Footer />
-    </div>
+    </Box>
   );
 }
 

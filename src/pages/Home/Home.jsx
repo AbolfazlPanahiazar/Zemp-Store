@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {}, []);
 
   return (
-    <Box my={6} width="100">
+    <Box my={6} width="100" display="flex" flexDirection="column" justifyContent="center">
       <Grid container>
         <Grid item>
           <Carousel />
@@ -17,8 +17,8 @@ function Home() {
         <Grid item>
           <Banner />
         </Grid>
-        <Categories />
       </Grid>
+      <Categories />
     </Box>
   );
 }

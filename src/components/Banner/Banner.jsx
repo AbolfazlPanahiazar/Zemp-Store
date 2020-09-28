@@ -8,12 +8,12 @@ import "./Banner.scss";
 function Banner() {
   return (
     <Grid container>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box className="margin1" mt={3}>
           <img className="banner-image" src={banner2} alt="banner" />
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box className="margin2" my={3}>
           <img className="banner-image" src={banner1} alt="banner" />
         </Box>
