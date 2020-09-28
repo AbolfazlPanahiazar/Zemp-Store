@@ -1,0 +1,16 @@
+.Carousel {
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  img {
+    width: 100%;
+    @media (max-width: 650px) {
+      width: 150%;
+    }
+  }
+}

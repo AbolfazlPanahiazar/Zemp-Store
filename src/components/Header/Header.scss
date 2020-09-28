@@ -1,0 +1,45 @@
+.Header {
+  width: 100%;
+
+  a {
+    color: #000000;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+
+    &--title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    &--location {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__bottom {
+    padding: 0 0.5rem;
+
+    nav {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      ul {
+        width: 100%;
+        max-width: 650px;
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+      }
+    }
+  }
+}
