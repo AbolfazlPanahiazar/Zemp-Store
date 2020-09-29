@@ -17,14 +17,19 @@
 
     &--item {
       width: 80px;
-      margin: 0 8px;
+      margin: 8px;
       padding: 3px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      box-shadow: 1px 1px 4px #ccc;
+      box-shadow: 2px 2px 4px #919090;
+      transition: all 0.3s;
       cursor: pointer;
+      &:hover {
+        box-shadow: 4px 4px 4px #919090;
+        transform: scale(1.05);
+      }
 
       img {
         padding: 5px;
