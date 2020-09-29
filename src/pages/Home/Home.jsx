@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
 import { Grid, Box } from "@material-ui/core";
-import api from "../../gate/api";
+import { connect, useSelector } from "react-redux";
 
 import Carousel from "../../components/Carousel/Carousel";
 import Banner from "../../components/Banner/Banner";
 import Categories from "../../components/Categories/Categories";
+import Loading from "../Loading/Loading";
 
-function Home() {
+import { getProducts } from "../../store/products/productsThunk";
+import { getCategories } from "../../store/categories/categoriesThunk";
+
+function Home({ getProducts, getCategories }) {
+  const pending1 = useSelector((state) => state.categories.pending);
+  const pending2 = useSelector((state) => state.products.pending);
+
   useEffect(() => {
-    api.get("products", { per_page: 100 }).then((res) => {
-      console.log(res);
-    });
+    getCategories();
+    getProducts();
   }, []);
 
-  return (
-    <Box my={6} width="100" display="flex" flexDirection="column" justifyContent="center">
+  return pending1 || pending2 ? (
+    <Loading />
+  ) : (
+    <Box my={6} display="flex" flexDirection="column" justifyContent="center">
       <Grid container>
         <Grid item>
           <Carousel />
@@ -28,4 +36,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default connect(null, { getProducts, getCategories })(Home);

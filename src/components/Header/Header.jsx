@@ -1,19 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Typography, List, ListItem, Divider, Drawer, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import SearchIcon from "../../assets/icons/SearchIcon";
 import LocationIcon from "../../assets/icons/LocationIcon";
 import CartIcon from "../../assets/icons/CartIcon";
-import "./Header.scss";
 
 const drawerWidth = 240;
 
@@ -25,6 +20,20 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     direction: "ltr",
+  },
+  headerTitle: {
+    fontSize: "20px",
+    fontWeight: "bold",
+  },
+  navlist: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    maxWidth: "900px",
+  },
+  navListItem: {
+    display: "flex",
+    justifyContent: "center",
   },
   drawerPaper: {
     width: drawerWidth,
@@ -60,8 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -73,38 +81,42 @@ function Header() {
 
   return (
     <header className="Header">
-      <div className="Header__top">
-        <div>
+      <Box display="flex" justifyContent="space-between">
+        <Box display="flex">
           <CartIcon />
           <SearchIcon />
-        </div>
-        <div className="Header__top--title">
-          <Link to="/">زمپ استور</Link>
-        </div>
-        <div className="Header__top--location">
+        </Box>
+        <Link to="/">
+          <Typography variant="h1" className={classes.headerTitle}>
+            زمپ استور
+          </Typography>
+        </Link>
+        <Box display="flex" justifyContent="center" alignItems="center">
           <span>ایران، تهران</span>
           <LocationIcon />
-        </div>
-      </div>
-      <div className="Header__bottom">
+        </Box>
+      </Box>
+      <Box display="flex">
         {window.innerWidth < 650 ? (
-          <MenuIcon fontSize="large" onClick={handleDrawerOpen} />
+          <Box>
+            <MenuIcon fontSize="large" onClick={handleDrawerOpen} />
+          </Box>
         ) : (
-          <nav>
-            <ul>
-              <Link to="/">
-                <li>فروشگاه</li>
-              </Link>
-              <Link to="/cart">
-                <li>سبد خرید</li>
-              </Link>
-              <li>وبلاگ</li>
-              <li>درباره ما</li>
-              <li>تماس با ما</li>
-            </ul>
-          </nav>
+          <Box display="flex" justifyContent="center" width={1}>
+            <List className={classes.navlist}>
+              <ListItem className={classes.navListItem}>
+                <Link to="/">فروشگاه</Link>
+              </ListItem>
+              <ListItem className={classes.navListItem}>
+                <Link to="/cart">سبد خرید</Link>
+              </ListItem>
+              <ListItem className={classes.navListItem}>وبلاگ</ListItem>
+              <ListItem className={classes.navListItem}>درباره ما</ListItem>
+              <ListItem className={classes.navListItem}>تماس با ما</ListItem>
+            </List>
+          </Box>
         )}
-      </div>
+      </Box>
       <Drawer
         className={classes.drawer}
         variant="persistent"

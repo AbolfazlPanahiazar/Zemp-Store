@@ -3,11 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 import routes from "./routes/routes";
 import Container from "./HOCs/Container/Container";
+import Loading from "./pages/Loading/Loading";
 
 function App() {
   return (
-    <div className="App">
-      <Suspense fallback={<h4>در حال دریافت اطلاعات ...</h4>}>
+    <div>
+      <Suspense fallback={<Loading />}>
         <Container>
           <Switch>
             {routes.map((route) => (

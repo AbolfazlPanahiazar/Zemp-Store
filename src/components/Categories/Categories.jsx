@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 
-import { getCategories } from "../../store/categories/categoriesThunk";
 import "./Categories.scss";
 
-function Categories({ getCategories }) {
+function Categories() {
   const categories = useSelector((state) => state.categories);
-
-  useEffect(() => {
-    getCategories();
-  }, []);
 
   return (
     <div className="categories">
@@ -34,4 +29,4 @@ function Categories({ getCategories }) {
   );
 }
 
-export default connect(null, { getCategories })(Categories);
+export default Categories;

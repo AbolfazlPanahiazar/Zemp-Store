@@ -1,17 +1,12 @@
 import React from "react";
-
-const style = {
-  marginRight: "1rem",
-};
+import { Search } from "@material-ui/icons";
+import { Box } from "@material-ui/core";
 
 function SearchIcon() {
   return (
-    <svg style={style} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path
-        d="M-.249,20.75a.851.851,0,0,0,0-1.2l-6.134-6.134A8.191,8.191,0,0,0-4.541,8.23,8.239,8.239,0,0,0-12.77,0,8.239,8.239,0,0,0-21,8.23a8.239,8.239,0,0,0,8.23,8.23,8.191,8.191,0,0,0,5.183-1.842l6.133,6.133a.849.849,0,0,0,.6.25A.847.847,0,0,0-.249,20.75ZM-6.243,8.23a6.534,6.534,0,0,1-6.527,6.527A6.534,6.534,0,0,1-19.3,8.23,6.534,6.534,0,0,1-12.77,1.7,6.534,6.534,0,0,1-6.243,8.23Z"
-        transform="translate(23 2)"
-      />
-    </svg>
+    <Box marginRight={2}>
+      <Search />
+    </Box>
   );
 }
 
