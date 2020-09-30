@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-import ProductView from "../../components/ProductView/ProductView";
+import ProductView from "../ProductView/ProductView";
 
 const useStyles = makeStyles(() => ({
   products: {
@@ -17,9 +17,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function OnSale() {
+function OffSale() {
   const classes = useStyles();
-  const products = useSelector((state) => state.products.products.filter((item) => item.on_sale));
+  const products = useSelector((state) => state.products.products.filter((item) => item.regular_price > 300000));
 
   return (
     <Box>
@@ -28,11 +28,11 @@ function OnSale() {
       </Box>
       <Box className={classes.products}>
         {products.map((item) => (
-          <ProductView key={item.id} name={item.name} image={item.images[0]} regularPrice={item.regular_price} salePrice={item.sale_price} />
+          <ProductView key={item.id} name={item.name} image={item.images[0]} regularPrice={""} salePrice={item.regular_price} />
         ))}
       </Box>
     </Box>
   );
 }
 
-export default OnSale;
+export default OffSale;

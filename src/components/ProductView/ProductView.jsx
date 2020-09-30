@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-between",
   },
   action: {
-    height: "50%",
+    height: "60%",
     display: "flex",
     flexDirection: "column",
   },
@@ -33,9 +33,20 @@ const useStyles = makeStyles(() => ({
   },
   name: {
     fontSize: "14px",
+    fontWeight: "bold",
   },
-  price: {
-    fontSize: "12px",
+  regPrice: {
+    fontSize: "13px",
+    textDecoration: "line-through",
+    color: "#D80D0D",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  salePrice: {
+    fontSize: "13px",
+    color: "#0DA869",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 }));
 
@@ -50,9 +61,9 @@ function ProductView({ name, image, regularPrice, salePrice }) {
         </CardActionArea>
         <CardContent>
           <Typography className={classes.name}>{name.substring(0, 20)}</Typography>
-          <Box display="flex">
-            <Typography className={classes.price}>{salePrice}</Typography>
-            <Typography className={classes.price}>{regularPrice}</Typography>
+          <Box height="40%" width="100%" marginTop="10px" display="flex" justifyContent="space-between" alignItems="flex-end">
+            <Typography className={classes.salePrice}>{salePrice.toPersianDigits()}</Typography>
+            {regularPrice && <Typography className={classes.regPrice}>{regularPrice.toPersianDigits()}</Typography>}
           </Box>
         </CardContent>
       </Box>
