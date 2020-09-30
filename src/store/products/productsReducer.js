@@ -3,7 +3,7 @@ import types from "./productsActionTypes";
 const INITIAL_DATA = {
   products: [],
   pending: false,
-  errors: [],
+  error: "",
 };
 
 const productsReducer = (state = INITIAL_DATA, { type, payload }) => {
@@ -23,7 +23,7 @@ const productsReducer = (state = INITIAL_DATA, { type, payload }) => {
       return {
         ...state,
         pending: false,
-        errors: payload,
+        error: payload,
       };
     default:
       return state;

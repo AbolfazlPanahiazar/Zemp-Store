@@ -6,6 +6,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import Banner from "../../components/Banner/Banner";
 import Categories from "../../components/Categories/Categories";
 import Loading from "../Loading/Loading";
+import OnSale from "../../components/OnSale/OnSale";
 
 import { getProducts } from "../../store/products/productsThunk";
 import { getCategories } from "../../store/categories/categoriesThunk";
@@ -32,6 +33,7 @@ function Home({ getProducts, getCategories }) {
         </Grid>
       </Grid>
       <Categories />
+      <OnSale />
     </Box>
   );
 }

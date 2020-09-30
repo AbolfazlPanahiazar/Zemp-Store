@@ -7,11 +7,11 @@ import Footer from "../../components/Footer/Footer";
 function Container({ children }) {
   return (
     <Box
+      width="100vw"
       style={{ maxWidth: "1100px" }}
       boxShadow={3}
       marginY={3}
       padding={2}
-      className="Container"
       bgcolor="white"
       display="flex"
       flexDirection="column"
