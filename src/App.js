@@ -1,11 +1,20 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import routes from "./routes/routes";
 import Container from "./HOCs/Container/Container";
 import Loading from "./pages/Loading/Loading";
 
-function App() {
+import { getProducts } from "./store/products/productsThunk";
+import { getCategories } from "./store/categories/categoriesThunk";
+
+function App({ getProducts, getCategories }) {
+  useEffect(() => {
+    getCategories();
+    getProducts();
+  }, []);
+
   return (
     <div>
       <Suspense fallback={<Loading />}>
@@ -21,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, { getProducts, getCategories })(App);

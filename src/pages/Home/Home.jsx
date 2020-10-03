@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid, Box } from "@material-ui/core";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Carousel from "../../components/Carousel/Carousel";
 import Banner from "../../components/Banner/Banner";
@@ -10,17 +10,9 @@ import OffSale from "../../components/OffSale/OffSale";
 import BestSellers from "../../components/‌BestSellers/BestSellers";
 import Carousel2 from "../../components/Carousel2/Carousel2";
 
-import { getProducts } from "../../store/products/productsThunk";
-import { getCategories } from "../../store/categories/categoriesThunk";
-
-function Home({ getProducts, getCategories }) {
+function Home() {
   const pending1 = useSelector((state) => state.categories.pending);
   const pending2 = useSelector((state) => state.products.pending);
-
-  useEffect(() => {
-    getCategories();
-    getProducts();
-  }, []);
 
   return pending1 || pending2 ? (
     <Loading />
@@ -42,4 +34,4 @@ function Home({ getProducts, getCategories }) {
   );
 }
 
-export default connect(null, { getProducts, getCategories })(Home);
+export default Home;

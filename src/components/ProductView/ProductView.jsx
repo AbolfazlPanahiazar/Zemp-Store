@@ -50,20 +50,26 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function ProductView({ name, image, regularPrice, salePrice }) {
+function ProductView({ product }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <Box className={classes.wrapper}>
         <CardActionArea className={classes.action}>
-          <img className={classes.image} src={image.src} title={name} alt={image.alt} />
+          <img className={classes.image} src={product.images[0].src} title={product.name} alt={product.images[0].alt} />
         </CardActionArea>
         <CardContent>
-          <Typography className={classes.name}>{name.substring(0, 20)}</Typography>
+          <Typography className={classes.name}>{product.name.substring(0, 15)}</Typography>
           <Box height="40%" width="100%" marginTop="10px" display="flex" justifyContent="space-between" alignItems="flex-end">
-            <Typography className={classes.salePrice}>{salePrice.toPersianDigits()}</Typography>
-            {regularPrice && <Typography className={classes.regPrice}>{regularPrice.toPersianDigits()}</Typography>}
+            {product.on_sale ? (
+              <>
+                <Typography className={classes.salePrice}>{product.sale_price.toPersianDigits()}</Typography>
+                <Typography className={classes.regPrice}>{product.regular_price.toPersianDigits()}</Typography>
+              </>
+            ) : (
+              <Typography className={classes.salePrice}>{product.regular_price.toPersianDigits()}</Typography>
+            )}
           </Box>
         </CardContent>
       </Box>

@@ -12,7 +12,7 @@ export const getProducts = () => {
       })
       .catch((error) => {
         console.log(error.response);
-        dispatch({ type: types.GET_PRODUCTS_FAIL, payload: error.response.data.message });
+        dispatch({ type: types.GET_PRODUCTS_FAIL, payload: "Failed" });
       });
   };
 };

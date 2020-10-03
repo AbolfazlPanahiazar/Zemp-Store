@@ -28,7 +28,7 @@ function OffSale() {
       </Box>
       <Box className={classes.products}>
         {products.map((item) => (
-          <ProductView key={item.id} name={item.name} image={item.images[0]} regularPrice={""} salePrice={item.regular_price} />
+          <ProductView key={item.id} product={item} />
         ))}
       </Box>
     </Box>

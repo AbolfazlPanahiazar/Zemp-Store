@@ -3,7 +3,8 @@ import types from "./categoriesActionTypes";
 const INITIAL_STATE = {
   categories: [],
   pending: false,
-  errors: [],
+  selected: null,
+  errors: null,
 };
 
 const categoriesReducer = (state = INITIAL_STATE, { type, payload }) => {
