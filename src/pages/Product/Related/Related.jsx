@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-import ProductView from "../ProductView/ProductView";
+import ProductView from "../../../components/ProductView/ProductView";
 
 const useStyles = makeStyles(() => ({
   products: {
@@ -18,14 +18,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function OffSale() {
+function Related({ products }) {
   const classes = useStyles();
-  const products = useSelector((state) => state.products.products.filter((item) => item.regular_price > 300000));
+
+  console.log("products", products);
 
   return (
-    <Box bgcolor="#6BB927" paddingY="10px" borderRadius="5px">
+    <Box paddingY="10px" marginY="10px" borderRadius="5px">
       <Box paddingX="8px">
-        <Typography className={classes.label}>پر فروش ها</Typography>
+        <Typography className={classes.label}>محصولات مشابه</Typography>
       </Box>
       <Box className={classes.products}>
         {products.map((item) => (
@@ -36,4 +37,4 @@ function OffSale() {
   );
 }
 
-export default OffSale;
+export default Related;

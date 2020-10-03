@@ -57,7 +57,7 @@ function ProductView({ product, className }) {
   return (
     <Card className={classes.root + " " + className}>
       <Box className={classes.wrapper}>
-        <Link to={`/product/${product.id}`}>
+        <Link style={{ width: "100%", height: "100%" }} to={`/product/${product.id}`}>
           <CardActionArea className={classes.action}>
             <img className={classes.image} src={product.images[0].src} title={product.name} alt={product.images[0].alt} />
           </CardActionArea>

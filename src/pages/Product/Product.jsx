@@ -5,8 +5,10 @@ import { makeStyles } from "@material-ui/styles";
 import { useParams, Link } from "react-router-dom";
 import api from "../../gate/api";
 import MUICarousel from "react-material-ui-carousel";
+import { useSelector } from "react-redux";
 
 import Loading from "../Loading/Loading";
+import Related from "./Related/Related";
 
 const useStyles = makeStyles(() => ({
   name: {
@@ -56,7 +58,9 @@ function Product() {
   const { productId } = useParams();
   const classes = useStyles();
   const [pending, setPending] = useState(true);
+  const all = useSelector((state) => state.products.products);
   const [count, setCount] = useState(1);
+  // const [similar, setSimilar] = useState([]);
   const [product, setProduct] = useState({
     name: "",
     price: "",
@@ -68,13 +72,15 @@ function Product() {
   useEffect(() => {
     api
       .get(`products/${productId}`)
-      .then((reponse) => {
-        console.log(reponse);
-        setProduct(reponse.data);
+      .then((response) => {
+        console.log(response);
+        setProduct(response.data);
+        // const temp = all.filter((item) => response.data.related_ids.inclues(item.id));
+        // setSimilar(temp);
         setPending(false);
       })
       .catch((error) => {
-        console.log(error.reponse);
+        console.log(error.response);
       });
   }, []);
 
@@ -87,7 +93,7 @@ function Product() {
           <Box display="flex" justifyContent="cetner" width="100%" height="100%">
             <MUICarousel className="Carousel" indicators={false}>
               {product.images.map((item) => (
-                <Box width="100%" height="100%" display="flex" justifyContent="center" key={item} bgcolor="red">
+                <Box width="100%" height="100%" display="flex" justifyContent="center" key={item}>
                   <img className={classes.image} src={item.src} alt={product.name} />
                 </Box>
               ))}
@@ -126,6 +132,7 @@ function Product() {
           </Box>
         </Grid>
       </Grid>
+      {/* <Related products={similar} /> */}
     </Box>
   );
 }
