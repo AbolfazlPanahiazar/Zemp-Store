@@ -1,11 +1,12 @@
 import React from "react";
 import { Card, CardActionArea, CardContent, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: "150px",
-    height: "220px",
+    width: "180px",
+    height: "250px",
     margin: "8px",
     padding: "3px",
     boxShadow: "3px 3px 3px #bbb",
@@ -50,15 +51,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function ProductView({ product }) {
+function ProductView({ product, className }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root + " " + className}>
       <Box className={classes.wrapper}>
-        <CardActionArea className={classes.action}>
-          <img className={classes.image} src={product.images[0].src} title={product.name} alt={product.images[0].alt} />
-        </CardActionArea>
+        <Link to={`/product/${product.id}`}>
+          <CardActionArea className={classes.action}>
+            <img className={classes.image} src={product.images[0].src} title={product.name} alt={product.images[0].alt} />
+          </CardActionArea>
+        </Link>
         <CardContent>
           <Typography className={classes.name}>{product.name.substring(0, 15)}</Typography>
           <Box height="40%" width="100%" marginTop="10px" display="flex" justifyContent="space-between" alignItems="flex-end">

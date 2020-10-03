@@ -8,7 +8,7 @@ const CategoryPage = lazy(() => import("../pages/CategoryPage/CategoryPage"));
 const routes = [
   { exact: true, path: "/", component: Home },
   { exact: true, path: "/cart", component: Cart },
-  { exact: true, path: "/:productId", component: Product },
+  { exact: true, path: "/product/:productId", component: Product },
   { exact: true, path: "/categories/:categoryId", component: CategoryPage },
 ];
 

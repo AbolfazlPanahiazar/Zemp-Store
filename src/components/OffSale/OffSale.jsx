@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
   },
   label: {
     fontWeight: "bold",
+    color: "#FFFFFF",
   },
 }));
 
@@ -22,7 +23,7 @@ function OffSale() {
   const products = useSelector((state) => state.products.products.filter((item) => item.on_sale));
 
   return (
-    <Box>
+    <Box width="100%" bgcolor="#EF394E" paddingY="10px" borderRadius="5px">
       <Box paddingX="8px">
         <Typography className={classes.label}>تخفیف دار ها</Typography>
       </Box>
