@@ -28,7 +28,7 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
     case types.INCREASE: {
       const newProductts = state.products.map((item) => (item.id === payload ? { ...item, count: item.count + 1 } : item));
-      const sum = newProductts.reduce((sum, item) => sum + item.price * count, 0);
+      const sum = newProductts.reduce((sum, item) => sum + item.price * item.count, 0);
       return {
         ...state,
         sum: sum,
@@ -37,7 +37,7 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
     case types.DECREASE: {
       const newProductts = state.products.map((item) => (item.id === payload ? { ...item, count: item.count - 1 } : item));
-      const sum = newProductts.reduce((sum, item) => sum + item.price * count, 0);
+      const sum = newProductts.reduce((sum, item) => sum + item.price * item.count, 0);
       return {
         ...state,
         sum: sum,
