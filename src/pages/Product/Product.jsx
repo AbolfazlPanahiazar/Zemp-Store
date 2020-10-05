@@ -5,10 +5,11 @@ import { makeStyles } from "@material-ui/styles";
 import { useParams, Link } from "react-router-dom";
 import api from "../../gate/api";
 import MUICarousel from "react-material-ui-carousel";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
 
 import Loading from "../Loading/Loading";
-import Related from "./Related/Related";
+import { addToCart } from "../../store/cart/cartActions";
 
 const useStyles = makeStyles(() => ({
   name: {
@@ -54,13 +55,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Product() {
+function Product({ addToCart }) {
   const { productId } = useParams();
   const classes = useStyles();
   const [pending, setPending] = useState(true);
-  const all = useSelector((state) => state.products.products);
   const [count, setCount] = useState(1);
-  // const [similar, setSimilar] = useState([]);
   const [product, setProduct] = useState({
     name: "",
     price: "",
@@ -75,8 +74,6 @@ function Product() {
       .then((response) => {
         console.log(response);
         setProduct(response.data);
-        // const temp = all.filter((item) => response.data.related_ids.inclues(item.id));
-        // setSimilar(temp);
         setPending(false);
       })
       .catch((error) => {
@@ -84,10 +81,15 @@ function Product() {
       });
   }, []);
 
+  const addToCartHandler = () => {
+    addToCart(product, count);
+    toast.success("به سبد خرید افزوده شد");
+  };
+
   return pending ? (
     <Loading />
   ) : (
-    <Box marginY="20px">
+    <Box minHeight="400px" marginY="20px">
       <Grid container spacing={1}>
         <Grid xs={12} sm={6} item>
           <Box display="flex" justifyContent="cetner" width="100%" height="100%">
@@ -122,7 +124,9 @@ function Product() {
               )}
             </Box>
             <Box dispaly="flex">
-              <Button className={classes.addButton}>افزودن به سبد خرید</Button>
+              <Button onClick={addToCartHandler} className={classes.addButton}>
+                افزودن به سبد خرید
+              </Button>
               <Link to="/cart">
                 <Button className={classes.cartButton}>
                   <ShoppingCart />
@@ -132,9 +136,8 @@ function Product() {
           </Box>
         </Grid>
       </Grid>
-      {/* <Related products={similar} /> */}
     </Box>
   );
 }
 
-export default Product;
+export default connect(null, { addToCart })(Product);

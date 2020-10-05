@@ -10,7 +10,7 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case types.ADD: {
       const newProductts = [...state.products, { ...payload.product, count: payload.count }];
-      const sum = newProductts.reduce((sum, item) => sum + item.price * count, 0);
+      const sum = newProductts.reduce((sum, item) => sum + item.price * item.count, 0);
       return {
         ...state,
         sum: sum,
@@ -19,7 +19,7 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
     case types.REMOVE: {
       const newProductts = state.products.filter((item) => item.id !== payload);
-      const sum = newProductts.reduce((sum, item) => sum + item.price * count, 0);
+      const sum = newProductts.reduce((sum, item) => sum + item.price * item.count, 0);
       return {
         ...state,
         sum: sum,

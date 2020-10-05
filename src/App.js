@@ -1,6 +1,8 @@
 import React, { Suspense, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import routes from "./routes/routes";
 import Container from "./HOCs/Container/Container";
@@ -24,6 +26,7 @@ function App({ getProducts, getCategories }) {
               <Route key={route.path} {...route} />
             ))}
           </Switch>
+          <ToastContainer position="top-right" autoClose={2500} hideProgressBar={true} />
         </Container>
       </Suspense>
     </div>

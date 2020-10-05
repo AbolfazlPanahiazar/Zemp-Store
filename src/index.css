@@ -28,3 +28,10 @@ a:hover {
 ul {
   list-style: none;
 }
+
+.Toastify__toast {
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+}
