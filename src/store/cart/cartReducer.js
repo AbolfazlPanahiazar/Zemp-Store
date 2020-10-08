@@ -2,7 +2,6 @@ import types from "./cartActionTypes";
 
 const INITIAL_STATE = {
   products: [],
-  numbers: [],
   sum: 0,
 };
 
@@ -47,7 +46,6 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
     case types.CLEAR:
       return {
         products: [],
-        numbers: [],
         sum: 0,
       };
     default:

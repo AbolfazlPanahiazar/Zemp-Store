@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store/store";
 import "./index.css";
+import { persistor } from "./store/store";
+import Loading from "pages/Loading/Loading";
 
 const THEME = createMuiTheme({
   typography: {
@@ -18,9 +21,11 @@ const THEME = createMuiTheme({
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={THEME}>
-      <Router>
-        <App />
-      </Router>
+      <PersistGate loading={<Loading />} persistor={persistor}>
+        <Router>
+          <App />
+        </Router>
+      </PersistGate>
     </ThemeProvider>
   </Provider>,
   document.getElementById("root")
