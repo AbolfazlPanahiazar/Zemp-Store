@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
   },
   image: {
-    width: "100%",
+    width: "90%",
     maxWidth: "400px",
     boxShadow: "3px 3px 3px #bbb",
   },
@@ -89,7 +89,7 @@ function Product({ addToCart }) {
   return pending ? (
     <Loading />
   ) : (
-    <Box minHeight="400px" marginY="20px">
+    <Box minHeight="400px" marginY="20px" width="100%">
       <Grid container spacing={1}>
         <Grid xs={12} sm={6} item>
           <Box display="flex" justifyContent="cetner" width="100%" height="100%">

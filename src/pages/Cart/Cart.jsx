@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: "10px",
   },
   image: {
-    maxWidth: "100%",
+    maxWidth: "90%",
   },
   countButtons: {
     width: "40px",

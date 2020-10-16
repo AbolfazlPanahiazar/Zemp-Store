@@ -41,7 +41,7 @@ function CategoryPage() {
   return pending ? (
     <Loading />
   ) : (
-    <Box display="flex" flexDirection="column" alignItems="center">
+    <Box width="100%" display="flex" flexDirection="column" alignItems="center">
       <Box padding="5px">
         <Banner2 />
       </Box>
